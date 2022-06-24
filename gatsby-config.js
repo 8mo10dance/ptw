@@ -13,5 +13,13 @@ module.exports = {
         path: `${__dirname}/src/data`,
       },
     },
+    {
+      resolve: "gatsby-source-graphql",
+      options: {
+        typeName: "r02",
+        fieldName: "r02",
+        url: "https://r02-webapp.onrender.com/graphql",
+      },
+    },
   ],
 };
