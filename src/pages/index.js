@@ -3,27 +3,30 @@ import React from "react";
 import Layout from "../components/layout";
 
 const IndexPage = ({ data }) => {
-  const memos = getMemos(data);
+  const links = getLinks(data);
 
   return (
     <Layout>
       <ul>
-        {memos.map((m) => (
-          <li key={m.id}>{m.content}</li>
+        {links.map((l) => (
+          <li key={l.id}>
+            <a href={l.url}>{l.name}</a>
+          </li>
         ))}
       </ul>
     </Layout>
   );
 };
 
-const getMemos = (data) => data.allMemosYaml.nodes;
+const getLinks = (data) => data.r02.links;
 
 export const query = graphql`
   {
-    allMemosYaml {
-      nodes {
+    r02 {
+      links {
         id
-        content
+        name
+        url
       }
     }
   }
