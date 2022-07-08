@@ -1,5 +1,8 @@
-import "modern-css-reset";
+import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
+import { ThemeProvider } from "styled-components";
+import theme from "../theme";
+import { CssBaseline } from "@mui/material";
 
 const useLinks = () => {
   const data = useStaticQuery(graphql`
@@ -22,7 +25,12 @@ const Layout = ({ children }) => {
 
   console.log(links);
 
-  return children;
+  return (
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      {children}
+    </ThemeProvider>
+  );
 };
 
 export default Layout;
